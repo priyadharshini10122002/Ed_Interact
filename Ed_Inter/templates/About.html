@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About EdInteract</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+    h2 {
+      color: #007bff;
+      margin-bottom: 40px; /* Increased margin bottom */
+      font-size: 36px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+    .btn-home {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>About </h2>
+    <p>
+      “EdInteract” serves as a comprehensive question and answer platform. It facilitates seamless interaction between students and staff members. Users can submit questions, receive answers, and engage in threaded discussions through comments and replies. The user-centric design includes personalized dashboards displaying individual question and answer activity, as well as profile management for users to edit their information. A central feed aggregates all user interactions, creating a dynamic and interactive space for knowledge sharing and community engagement. Our web application introduces a dynamic feed feature, reimagining the traditional question and answer paradigm. Drawing inspiration from social media platforms, the feed aggregates user interactions, including questions, answers, comments, and replies, into a single, fluid stream. Users have the option to save discussions for future reference. Saved discussions can be accessed from the user's profile or dashboard, allowing them to revisit important topics or review past interactions.
+    </p>
+    <a href="{% url 'index' %}" class="btn btn-primary btn-home">Back to Home</a>
+  </div>
+</body>
+</html>

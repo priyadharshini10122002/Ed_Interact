@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: #f8f9fa; /* Light gray background */
+      font-family: Arial, sans-serif; /* Default font */
+    }
+    .registration-container {
+      margin-top: 50px;
+    }
+    .registration-heading {
+      color: #007bff; /* Primary color for heading */
+      font-size: 2.5em; /* Larger font size for heading */
+      margin-bottom: 30px; /* Spacing below heading */
+    }
+    .registration-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .registration-option {
+      margin: 10px;
+    }
+    .registration-option h3 {
+      font-size: 1.5em; /* Larger font size for option title */
+      color: #f5f1f1; /* Dark gray color for option title */
+    }
+    .btn-registration {
+      width: 250px;
+      font-size: 1.2em; /* Larger font size for buttons */
+      border-radius: 30px; /* Rounded corners for buttons */
+      background-color: #007bff; /* Primary color for buttons */
+      border-color: #007bff; /* Border color for buttons */
+      transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition on hover */
+    }
+    .btn-registration:hover {
+      background-color: #2ed31f; /* Darker shade of primary color on hover */
+      border-color: #0056b3; /* Darker shade of border color on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row registration-container justify-content-center">
+      <div class="col-md-6 text-center">
+        <h2 class="registration-heading">Registration</h2>
+        <p>Please select your role to register:</p>
+        <div class="registration-options">
+          <div class="registration-option">
+           
+            <a href="{% url 'Student_Register' %}" class="btn btn-registration btn-lg">Register as Student</a>
+          </div>
+          <div class="registration-option">
+             <a href="{% url 'Staff_Register' %}" class="btn btn-registration btn-lg">Register as Staff</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery (optional if you need dropdowns or other interactive features) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+</body>
+</html>

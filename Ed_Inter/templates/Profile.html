@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Information</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin: 20px auto;
+      max-width: 800px; /* Max width for better layout on larger screens */
+      padding: 0 20px;
+    }
+    .title-container {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #dab232;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .edit {
+      margin-right: 20px;
+      margin-left: 1000px;
+      margin-top: 5px;
+      width: 15%;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .submit-button{
+    
+      
+      width: 30%;
+    }
+    .back{
+        margin-left: 20px;
+        margin-top: 5px;
+    } 
+   
+
+
+
+  </style>
+</head>
+<body>
+    <div class="title-container">
+        <h1>Profile Information</h1>
+    </div>  
+       <div class="back">
+        <a href="{% url 'BacktoHome' %}" class="btn btn-secondary back-button">Back to Home</a>
+      </div>
+      <div class="edit">
+        <button class="btn btn-primary edit-button" onclick="enableEdit()">Edit Information</button>
+      </div>
+
+  <div class="container">   
+    
+      {% for i in data%}
+      <form action="{% url 'Profile_Update' %}" method="post">{% csrf_token %} 
+      <div class="form-group">
+        <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" value="{{i.name}}" disabled> 
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile:</label>
+        <input type="text" class="form-control" id="mobile" name ="mobile" value="{{i.mobile}}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{i.email}}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="course">Course:</label>
+        <input type="text" class="form-control" id="course" name ="course" value="{{i.course}}" disabled>
+      </div>
+    
+      <!-- Add more fields for other information -->
+      <!-- <button type="submit" class="btn btn-primary submit-button">Save Changes</button> -->
+
+      <a href="{% url 'Profile_Update'%}"></a><button type="submit" class="btn btn-primary submit-button" >Save Changes</button>
+      </form>
+      {% endfor %}
+  
+  
+ 
+
+
+
+  </div>
+
+
+
+  <script>
+    function enableEdit() {
+      var nameField = document.getElementById('name');
+      nameField.disabled = false;
+      nameField.focus(); // Set focus to the input field after enabling
+
+      // Enable other fields
+      document.getElementById('mobile').disabled = false;
+      document.getElementById('email').disabled = false;
+      document.getElementById('name').disabled = false;
+      document.getElementById('course').disabled = false;
+      
+    }
+  </script>
+</body>
+</html>

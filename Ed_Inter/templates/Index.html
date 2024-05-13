@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdInteract</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Center title */
+    .center {
+      text-align: center;
+    }
+
+    /* Adjust margin for buttons */
+    .button-group {
+      margin-top: 20px;
+      margin-bottom: 40px; /* Increase margin bottom */
+    }
+
+    /* Custom styles for the title */
+    h1.title {
+      font-size: 3em; /* Larger font size */
+      font-weight: bold; /* Bold font weight */
+      color: black; /* Black color */
+      text-transform: uppercase; /* Uppercase text */
+      letter-spacing: 2px; /* Letter spacing */
+      font-family: 'Arial', sans-serif; /* Change font type */
+    }
+
+    /* Background styles */
+    body {
+      background-color: #ffffcc; /* Light yellow background color */
+      font-family: Arial, sans-serif; /* Change font type */
+    }
+
+    /* Custom styles for the main content */
+    .main-content {
+      text-align: justify; /* Justify align content */
+      margin-top: 50px; /* Add space between header and content */
+      padding: 0 20px; /* Add padding to the sides */
+      font-size: 18px; /* Adjust font size */
+      line-height: 1.6; /* Adjust line height */
+      color: #333; /* Dark gray color */
+    }
+    /* Indent the first line */
+    .main-content p:first-of-type {
+      text-indent: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-12 center">
+        <!-- Customized title -->
+        <h1 class="title">EdInteract</h1>
+      </div>
+    </div>
+    <div class="row mt-3 button-group">
+      <div class="col-sm-12">
+        <div class="float-right">
+          <!-- Button for Register -->
+          <a href="{% url 'RegisterAs' %}" class="btn btn-primary ml-3">Register</a>
+          <!-- Button for Login -->
+          <a href="{% url 'Login' %}" class="btn btn-primary ml-3">Login</a>
+          <!-- Button for About -->
+          <a href="{% url 'About' %}" class="btn btn-primary ml-3">About</a>
+          <!-- Button for Contact -->
+          <a href="{% url 'Contact' %}" class="btn btn-primary ml-3">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5 main-content">
+      <div class="col-sm-12">
+        <p>“EdInteract” serves as a comprehensive question and answer platform. It facilitates seamless interaction between students and staff members. Users can submit questions, receive answers, and engage in threaded discussions through comments and replies. The user-centric design includes personalized dashboards displaying individual question and answer activity, as well as profile management for users to edit their information. A central feed aggregates all user interactions, creating a dynamic and interactive space for knowledge sharing and community engagement. Our web application introduces a dynamic feed feature, reimagining the traditional question and answer paradigm. Drawing inspiration from social media platforms, the feed aggregates user interactions, including questions, answers, comments, and replies, into a single, fluid stream. Users have the option to save discussions for future reference. Saved discussions can be accessed from the user's profile or dashboard, allowing them to revisit important topics or review past interactions.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ed_Interact</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Existing styles */
+
+    /* Popup styles */
+    .popup-container {
+      display: none; /* Hide popup by default */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 9999;
+      width: 80%; /* Adjust width as needed */
+      max-width: 600px; /* Maximum width for responsiveness */
+    }
+
+    .popup-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .popup-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .popup-button:hover {
+      background-color: #0056b3;
+    }
+    .title{
+      margin-top: 10px;
+      margin-left: 550px; 
+    }
+    .btn{
+      margin-left: 5px;
+    }
+    .interaction-item{
+     margin-left: 300px ; 
+     margin-top: 100px;
+    }
+
+
+  </style>
+</head>
+<body>
+    
+  <div class="title-container">
+    <div class="title">
+      <h1>Ed_Interact</h1>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button class="btn btn-primary post-button" id="postButton">Post Question</button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Dashboard' %}" >Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" href="{% url 'Profile' %}" >Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="{% url 'Saved_Items' %}" >Saved</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="interaction-item">
+      <div class="question">Question 1:</div>
+      <div class="answer">Answer to Question 1.</div>
+      <div class="command">Command related to Question 1.</div>
+      <div class="reply">Reply to Command related to Question 1.</div>
+    </div>
+  </div>
+
+  <!-- Popup container -->
+  <form action="{% url 'question_post' %}" method="post">{% csrf_token %}
+  
+  <div class="popup-container" id="popupContainer">
+    <h3>Post a Question</h3>
+    <textarea id="questionText" class="popup-input" rows="4" cols="50"></textarea><br>
+    <button id="postQuestion" class="popup-button" name="question">Post</button>
+    <button id="cancelButton" class="popup-button">Cancel</button>
+  </div>
+  
+  </form>
+  <script>
+    document.getElementById("postButton").addEventListener("click", function() {
+      var popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "block";
+    });
+
+    document.getElementById("postQuestion").addEventListener("click", function() {
+      var questionText = document.getElementById("questionText").value;
+      alert("Question posted: " + questionText);
+      // You can add further handling here like sending the question to a server
+      // or updating the page without reloading using AJAX
+      
+      // Close the popup
+      var popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "none";
+    });
+
+    document.getElementById("cancelButton").addEventListener("click", function() {
+      var popupContainer = document.getElementById("popupContainer");
+      popupContainer.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

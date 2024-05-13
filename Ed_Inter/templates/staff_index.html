@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ed_Interact</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Existing styles */
+
+    /* Popup styles */
+    .popup-container {
+      display: none; /* Hide popup by default */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      z-index: 9999;
+      width: 80%; /* Adjust width as needed */
+      max-width: 600px; /* Maximum width for responsiveness */
+    }
+
+    .popup-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .popup-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .popup-button:hover {
+      background-color: #0056b3;
+    }
+    .title{
+      margin-top: 10px;
+      margin-left: 550px; 
+    }
+    .btn{
+      margin-left: 5px;
+    }
+    .interaction-item{
+     margin-left: 300px ; 
+     margin-top: 100px;
+    }
+    .question-container{
+    width: 80%; /* Set the width of the container */
+    margin: 0 auto; 
+    margin-top: 10px;/* Center the container horizontally */
+    border: 5px solid #636262; 
+    position: relative;/* Border style */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include border and padding in the width calculation */
+    }
+    .save-btn {
+    position: absolute; /* Set absolute positioning */
+    top: 10px; /* Set distance from the top */
+    right: 10px; /* Set distance from the right */
+}
+    /* Style for the answer container */
+.answer-container {
+    
+    margin-left: 20px; /* Indent the answer container */
+}
+
+/* Style for the comment container */
+.comment-container {
+ 
+    margin-left: 40px; /* Indent the comment container */
+}
+
+/* Style for the reply container */
+.reply-container{
+ 
+    margin-left: 80px; /* Indent the reply container */
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="title-container">
+    <div class="title">
+      <h1>Ed_Interact</h1>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Dashboard' %}" >Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" href="{% url 'Profile' %}" >Profile</a>
+          </li>
+          <li class="nav-item">
+            <form action="{% url 'Saved_Items_List' %}" method="post">{% csrf_token %} 
+              <a class="nav-link"  href="{% url 'Saved_Items_List' %}" >Saved</a>
+               </form> 
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  
+  <div class="feed_container">
+    
+    {% for question in data %}
+    <div class="question-container">
+
+      
+      <form action="{% url 'Save_Item' question_id=question.question_id  %}" method="post">{% csrf_token %} 
+        <a href="{% url 'Save_Item' question_id=question.question_id %}"></a><button class="btn btn-primary save-btn" id="Saved" >Save</button>
+     </form>           
+        <p><b>{{ question.username }} </b>: {{ question.question }}  <form action="{% url 'answer_post' question_id=question.question_id %}" method="post">{% csrf_token %}    <a href="{% url 'answer_post' question_id=question.question_id%}"></a><button class="btn btn-primary" id="answer_Button" >Answer</button></form> </p> 
+        {% for answer in question.answers %}
+            <div class="answer-container">
+              <h3>{{answer.answer_id}} {{question_id}}</h3>
+              <p><b>{{ answer.username }} </b>: {{ answer.answer }}   </p>
+                {% for comment in answer.comments %}
+                    <div class="comment-container">
+                        <p><b>{{ comment.username }} </b>: {{ comment.comment }}<form action="{% url 'reply_post' commmand_id=comment.comment_obj %}" method="post">{% csrf_token %}    <a href="{% url 'reply_post' commmand_id=comment.comment_obj%}"></a><button class="btn btn-primary" id="st_replyButton" >Reply</button></form> </p>
+                        {% for reply in comment.replies %}
+                            <div class="reply-container">
+                                <p><b>{{ reply.username }} </b>: {{ reply.reply }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>

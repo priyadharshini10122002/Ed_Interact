@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Update Success</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f8f9fa; /* Set background color */
+        }
+        .container {
+            margin-top: 100px; /* Center content vertically */
+        }
+        .success-message {
+            text-align: center; /* Center text horizontally */
+            font-size: 36px; /* Set font size */
+            color: #28a745; /* Set text color to green */
+        }
+        .back-to-home {
+            text-align: center; /* Center text horizontally */
+            margin-top: 20px; /* Add space below the success message */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Success Message -->
+        <div class="success-message">
+            Profile Information Updated Successfully !
+        </div>
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+            <a href="{% url 'BacktoHome' %}" class="btn btn-secondary back-button">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
